@@ -1,0 +1,16 @@
+{
+  "name": "bulletproof-react",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A simple, scalable, and powerful architecture for building production ready React applications.",
+  "scripts": {
+    "prepare": "cd ./apps/nextjs-app && yarn && cd ../nextjs-pages && yarn && cd ../react-vite && yarn"
+  },
+  "author": "alan2207",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "typescript": "^5.8.3"
+  }
+}
