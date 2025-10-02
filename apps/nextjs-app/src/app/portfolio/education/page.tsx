@@ -7,7 +7,7 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
 );
 
 const Card = ({ children }: { children: React.ReactNode }) => (
-  <div className="relative rounded-2xl border border-slate-200/70 bg-white/70 p-4 shadow-sm backdrop-blur transition hover:shadow-md hover:-translate-y-0.5">
+  <div className="relative rounded-2xl border border-slate-200/70 bg-white/70 p-4 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
     {children}
   </div>
 );
@@ -29,7 +29,8 @@ const COURSEWORK = [
     badges: ['Systems', 'Security', 'Data', 'AI', 'Foundations'],
   },
   {
-    heading: 'Bachelors in Computer Science — Easwari Engineering College (Anna University)',
+    heading:
+      'Bachelors in Computer Science — Easwari Engineering College (Anna University)',
     items: [
       'Software Engineering',
       'Database Management Systems',
@@ -45,7 +46,7 @@ const EducationPage = () => {
   return (
     <section className="relative">
       <div
-        className="absolute -inset-x-8 -top-8 -bottom-8 rounded-[3rem] bg-gradient-to-b from-indigo-100/50 to-transparent blur-2xl"
+        className="absolute -inset-8 rounded-[3rem] bg-gradient-to-b from-indigo-100/50 to-transparent blur-2xl"
         aria-hidden
       />
 
@@ -57,16 +58,22 @@ const EducationPage = () => {
           Software Engineering–focused classes
         </h1>
         <p className="max-w-3xl text-slate-700">
-          A selection of courses aligned with systems, security, data, AI, and core CS fundamentals.
+          A selection of courses aligned with systems, security, data, AI, and
+          core CS fundamentals.
         </p>
       </header>
 
-      <ol className="relative ml-4 border-l border-indigo-200/70 pl-6 space-y-6" aria-label="Coursework timeline">
+      <ol
+        className="relative ml-4 space-y-6 border-l border-indigo-200/70 pl-6"
+        aria-label="Coursework timeline"
+      >
         {COURSEWORK.map(({ heading, items, badges }) => (
           <li key={heading} className="relative">
             <Card>
               <div className="flex items-start justify-between gap-4">
-                <h3 className="text-lg font-semibold text-slate-900">{heading}</h3>
+                <h3 className="text-lg font-semibold text-slate-900">
+                  {heading}
+                </h3>
                 <div className="flex flex-wrap gap-2">
                   {badges.map((b) => (
                     <Badge key={b}>{b}</Badge>
@@ -75,7 +82,9 @@ const EducationPage = () => {
               </div>
               <ul className="mt-3 grid gap-1 pl-6 text-slate-800 sm:grid-cols-2">
                 {items.map((c) => (
-                  <li key={c} className="list-disc">{c}</li>
+                  <li key={c} className="list-disc">
+                    {c}
+                  </li>
                 ))}
               </ul>
             </Card>
@@ -87,12 +96,15 @@ const EducationPage = () => {
       <section className="relative mt-10">
         <header className="mb-3">
           <h2 className="text-2xl font-bold text-slate-900">Research papers</h2>
-          <p className="text-slate-700">Publications related to imaging and deep learning.</p>
+          <p className="text-slate-700">
+            Publications related to imaging and deep learning.
+          </p>
         </header>
         <div className="space-y-3">
           <Card>
             <h3 className="text-base font-semibold text-slate-900">
-              Dehazing of Multispectral Images Using Contrastive Learning In CycleGAN
+              Dehazing of Multispectral Images Using Contrastive Learning In
+              CycleGAN
             </h3>
             <p className="text-sm text-slate-600">Springer (Book Chapter)</p>
             <a
@@ -106,8 +118,12 @@ const EducationPage = () => {
           </Card>
 
           <Card>
-            <h3 className="text-base font-semibold text-slate-900">Survey on Dehazing of Multispectral Images</h3>
-            <p className="text-sm text-slate-600">Communications in Mathematics and Applications</p>
+            <h3 className="text-base font-semibold text-slate-900">
+              Survey on Dehazing of Multispectral Images
+            </h3>
+            <p className="text-sm text-slate-600">
+              Communications in Mathematics and Applications
+            </p>
             <a
               className="mt-2 inline-block rounded-full bg-slate-900 px-3 py-1 text-xs font-medium text-white hover:bg-slate-800"
               href="https://www.proquest.com/openview/b4471c83500f8ab52030d994ba55f2c4/1?pq-origsite=gscholar&cbl=5542503"

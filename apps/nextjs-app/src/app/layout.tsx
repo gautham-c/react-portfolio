@@ -12,7 +12,8 @@ import '@/styles/globals.css';
 
 export const metadata = {
   title: "Gautham's Portfolio",
-  description: 'Software Engineer specializing in full-stack development, cloud technologies, and data engineering',
+  description:
+    'Software Engineer specializing in full-stack development, cloud technologies, and data engineering',
 };
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {

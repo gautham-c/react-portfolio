@@ -7,7 +7,7 @@ const Badge = ({ children }: { children: React.ReactNode }) => (
 );
 
 const Card = ({ children }: { children: React.ReactNode }) => (
-  <div className="relative rounded-2xl border border-slate-200/70 bg-white/70 p-4 shadow-sm backdrop-blur transition hover:shadow-md hover:-translate-y-0.5">
+  <div className="relative rounded-2xl border border-slate-200/70 bg-white/70 p-4 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
     {children}
   </div>
 );
@@ -44,7 +44,8 @@ const PROJECTS: Project[] = [
   },
   {
     title: 'Inbox/GitHub Reply Assistant',
-    blurb: 'Draft kind, on-topic replies to emails or GitHub issues from pasted text — 100% client-side.',
+    blurb:
+      'Draft kind, on-topic replies to emails or GitHub issues from pasted text — 100% client-side.',
     tech: ['web-llm', 'Prompt templates', 'Browser-only'],
     highlights: [
       'Paste email/issue → choose tone → generate draft → copy',
@@ -54,41 +55,35 @@ const PROJECTS: Project[] = [
   },
   {
     title: '“What Changed?” Site Summarizer',
-    blurb: 'Track a handful of URLs/RSS feeds and publish daily diff summaries as a static site.',
+    blurb:
+      'Track a handful of URLs/RSS feeds and publish daily diff summaries as a static site.',
     tech: ['GitHub Actions', 'Cloudflare Workers AI', 'Static JSON'],
     highlights: [
       'Daily cron via GitHub Actions',
       'Diff pages/RSS and summarize in 5–8 sentences',
       'Commits data.json; frontend renders latest changes',
     ],
-  }
+  },
 ];
-
-const Action = ({ href, children }: { href?: string; children: React.ReactNode }) => (
-  href ? (
-    <a
-      href={href}
-      target={href.startsWith('http') ? '_blank' : undefined}
-      rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-      className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-900 shadow-sm hover:bg-slate-50"
-    >
-      {children}
-    </a>
-  ) : null
-);
 
 const ProjectsPage = () => {
   return (
     <section className="relative">
-      <div className="absolute -inset-x-8 -top-8 -bottom-8 rounded-[3rem] bg-gradient-to-b from-amber-100/40 to-transparent blur-2xl" aria-hidden />
+      <div
+        className="absolute -inset-8 rounded-[3rem] bg-gradient-to-b from-amber-100/40 to-transparent blur-2xl"
+        aria-hidden
+      />
 
       <header className="relative mb-6 space-y-2">
-        <p className="text-sm font-semibold tracking-wide text-amber-700">Projects</p>
+        <p className="text-sm font-semibold tracking-wide text-amber-700">
+          Projects
+        </p>
         <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-4xl">
           Work I’m proud of
         </h1>
         <p className="max-w-3xl text-slate-700">
-          A mix of product UI and systems work: real‑time apps, high‑performance parsing, and clean API design.
+          A mix of product UI and systems work: real‑time apps, high‑performance
+          parsing, and clean API design.
         </p>
       </header>
 
