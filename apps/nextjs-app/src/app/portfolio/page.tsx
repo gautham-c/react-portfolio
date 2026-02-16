@@ -119,19 +119,20 @@ const SummaryPage = () => {
         <div className="flex flex-col lg:flex-row lg:items-start lg:gap-8">
           <div className="flex-1 space-y-3">
             <p className="inline-flex items-center gap-2 text-sm font-semibold tracking-wide text-sky-700">
-              <IconBriefcase /> Software Engineer · 3+ years · Healthcare, SaaS,
-              Research
+              <IconBriefcase /> Software Engineer · Backend Systems · APIs & Data
+              Platforms
             </p>
             <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl">
               I build reliable products end‑to‑end — APIs, data pipelines, and
               UI — with measurable impact.
             </h1>
             <p className="max-w-3xl text-lg text-slate-700">
-              I design and ship production software across Medicaid IT, SaaS,
-              and research settings. Strengths: Java, Python, React/Next.js,
-              Spring Boot, SQL; cloud with Azure & AWS; CI/CD with Azure DevOps;
-              and data workflows at scale. I value clean architecture, type‑safe
-              APIs, and automation.
+              Software Engineer with 5 years delivering backend and data-driven
+              enterprise systems. Built Java APIs for SaaS platforms that
+              improved response time by 30%, and shipped services in healthcare
+              that cut latency 15% and query times 25%. Skilled in Java,
+              RESTful APIs, SQL/NoSQL, and CI/CD pipelines on Azure DevOps and
+              AWS.
             </p>
           </div>
 
@@ -229,7 +230,7 @@ const SummaryPage = () => {
           <dt className="text-xs uppercase tracking-wide text-slate-500">
             Experience
           </dt>
-          <dd className="text-2xl font-bold text-slate-900">3+ yrs</dd>
+          <dd className="text-2xl font-bold text-slate-900">5 yrs</dd>
         </div>
         <div className="rounded-xl border border-slate-200/70 bg-white/70 p-4 text-center shadow-sm backdrop-blur">
           <dt className="text-xs uppercase tracking-wide text-slate-500">

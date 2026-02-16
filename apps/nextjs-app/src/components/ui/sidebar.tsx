@@ -43,9 +43,10 @@ export const Sidebar = ({ items }: { items: SidebarItem[] }) => {
     >
       <div
         className={cn(
-          'relative h-full overflow-hidden rounded-r-[2rem] bg-gradient-to-b from-white/90 via-white/70 to-cyan-50/60 supports-[backdrop-filter]:bg-white/60 backdrop-blur-xl',
-          'ring-1 ring-inset ring-white/60 shadow-[0_20px_60px_rgba(45,140,240,0.18)] text-gray-900',
-          'flex flex-col items-center px-2.5 pb-7 pt-5',
+          'relative h-full min-h-dvh overflow-y-auto rounded-r-[2rem] bg-gradient-to-b from-white/92 via-white/72 to-cyan-50/65 supports-[backdrop-filter]:bg-white/60 backdrop-blur-xl',
+          'border border-sky-200/90 ring-1 ring-inset ring-sky-300/70 shadow-[0_20px_70px_rgba(45,140,240,0.18)] text-gray-900',
+          'flex flex-col items-center px-3 pb-8 pt-5',
+          'scrollbar-thin scrollbar-thumb-sky-200 scrollbar-track-transparent',
         )}
       >
         <div className="pointer-events-none absolute inset-x-6 top-28 h-40 rounded-full bg-sky-200/50 blur-3xl" />
@@ -89,7 +90,7 @@ export const Sidebar = ({ items }: { items: SidebarItem[] }) => {
 
         <nav
           className={cn(
-            'mt-4 w-full text-gray-900',
+            'mt-4 w-full flex-1 text-gray-900',
             collapsed ? 'mt-10' : 'mt-6',
             'flex flex-col items-center gap-4 w-full',
           )}
@@ -145,8 +146,8 @@ export const Sidebar = ({ items }: { items: SidebarItem[] }) => {
 
         {/* Bottom contact details when expanded */}
         {!collapsed && (
-          <div className="pointer-events-auto absolute inset-x-0 bottom-4 px-4">
-            <div className="rounded-3xl bg-white/80 p-4 text-[13px] text-gray-900 shadow-md ring-1 ring-inset ring-slate-200/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/60">
+          <div className="pointer-events-auto mt-auto w-full px-4 pt-4">
+            <div className="rounded-3xl bg-white/90 p-4 text-[13px] text-gray-900 shadow-[0_12px_30px_rgba(45,140,240,0.12)] ring-1 ring-inset ring-sky-200/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/70">
               <div className="mb-3 flex items-center gap-2 font-semibold">
                 <svg
                   viewBox="0 0 24 24"
