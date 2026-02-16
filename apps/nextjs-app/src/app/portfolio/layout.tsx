@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
+import { MobileNav } from '@/components/ui/mobile-nav';
 import { Sidebar } from '@/components/ui/sidebar';
 
 // Icons for navigation
@@ -77,9 +78,14 @@ const items = [
 const PortfolioLayout = ({ children }: { children: ReactNode }) => {
   return (
     <div className="min-h-screen bg-[radial-gradient(1200px_600px_at_50%_-10%,rgba(59,130,246,0.08),transparent_60%)]">
-      <div className="flex w-full items-start">
-        <Sidebar items={items} />
-        <main className="mx-auto max-w-6xl flex-1 p-8">{children}</main>
+      <MobileNav items={items} />
+      <div className="mx-auto flex w-full max-w-screen-2xl flex-col gap-6 px-3 sm:px-5 lg:flex-row lg:items-start lg:px-6">
+        <div className="hidden lg:block lg:pt-8">
+          <Sidebar items={items} />
+        </div>
+        <main className="flex-1 pb-10 pt-4 sm:pb-12 sm:pt-6 lg:py-10">
+          {children}
+        </main>
       </div>
     </div>
   );

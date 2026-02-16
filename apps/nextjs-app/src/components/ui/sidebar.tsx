@@ -1,5 +1,6 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 import { cn } from '@/utils/cn';
@@ -24,32 +25,39 @@ export type SidebarItem = {
 export const Sidebar = ({ items }: { items: SidebarItem[] }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [logoError, setLogoError] = useState(false);
+  const pathname = usePathname();
+
+  const isActivePath = (href: string) => {
+    if (!pathname) return false;
+    if (href === '/portfolio') return pathname === '/portfolio';
+    return pathname.startsWith(`${href}`);
+  };
 
   return (
     <aside
       className={cn(
         'group sticky top-0 z-10 transition-[width] duration-300 ease-out',
         'h-dvh min-h-screen',
-        collapsed ? 'w-16' : 'w-64',
+        collapsed ? 'w-16' : 'w-72',
       )}
     >
       <div
         className={cn(
-          'relative h-full overflow-hidden p-4 pr-5 rounded-r-[2rem] bg-sky-100/40 supports-[backdrop-filter]:bg-sky-100/25 backdrop-blur-xl',
-          'ring-1 ring-inset ring-sky-300/60 shadow-[0_10px_40px_rgba(14,165,233,0.15)] text-gray-900',
-          'flex flex-col items-center',
+          'relative h-full overflow-hidden rounded-r-[2rem] bg-gradient-to-b from-white/90 via-white/70 to-cyan-50/60 supports-[backdrop-filter]:bg-white/60 backdrop-blur-xl',
+          'ring-1 ring-inset ring-white/60 shadow-[0_20px_60px_rgba(45,140,240,0.18)] text-gray-900',
+          'flex flex-col items-center px-2.5 pb-7 pt-5',
         )}
       >
-        <div className="pointer-events-none absolute -left-10 top-20 size-40 rounded-full bg-sky-300/40 blur-2xl" />
-        <div className="pointer-events-none absolute left-24 top-1/3 size-28 rounded-full bg-cyan-300/40 blur-2xl" />
-        <div className="pointer-events-none absolute -left-6 bottom-20 size-56 rounded-full bg-blue-400/30 blur-3xl" />
+        <div className="pointer-events-none absolute inset-x-6 top-28 h-40 rounded-full bg-sky-200/50 blur-3xl" />
+        <div className="pointer-events-none absolute inset-x-10 top-1/2 h-36 rounded-full bg-cyan-200/45 blur-3xl" />
+        <div className="pointer-events-none absolute inset-x-6 bottom-16 h-44 rounded-full bg-sky-100/40 blur-3xl" />
 
         <div className="mb-6 flex items-center justify-center gap-3">
           <button
             onClick={() => setCollapsed((v) => !v)}
             className={cn(
-              'grid size-14 aspect-square place-items-center rounded-full overflow-hidden',
-              'bg-gradient-to-b from-sky-100/80 to-sky-200/70 text-gray-900 shadow-lg ring-1 ring-inset ring-sky-300/80 backdrop-blur-md transition hover:from-sky-100 hover:to-sky-200',
+              'grid size-14 aspect-square place-items-center overflow-hidden rounded-2xl',
+              'bg-gradient-to-b from-sky-100/80 to-sky-200/70 text-gray-900 shadow-lg ring-1 ring-inset ring-sky-200/80 backdrop-blur-md transition hover:-translate-y-0.5 hover:from-sky-100 hover:to-sky-200',
             )}
             aria-label="Toggle sidebar"
           >
@@ -62,24 +70,26 @@ export const Sidebar = ({ items }: { items: SidebarItem[] }) => {
                 onError={() => setLogoError(true)}
               />
             ) : (
-              <span className="select-none text-base font-black tracking-wide">
-                <span className="bg-gradient-to-r from-sky-500 to-sky-700 bg-clip-text text-transparent">
-                  G
-                </span>
-                <span className="text-slate-700">C</span>
+              <span className="select-none text-base font-black tracking-wide text-slate-800">
+                GC
               </span>
             )}
           </button>
           {!collapsed && (
-            <span className="select-none text-base font-extrabold uppercase tracking-[0.12em] text-slate-800">
-              GAUTHAM CHADALAVADA
-            </span>
+            <div className="leading-tight">
+              <p className="select-none text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                Portfolio
+              </p>
+              <p className="select-none text-sm font-bold text-slate-900">
+                Gautham Chadalavada
+              </p>
+            </div>
           )}
         </div>
 
         <nav
           className={cn(
-            'mt-6 text-gray-900',
+            'mt-4 w-full text-gray-900',
             collapsed ? 'mt-10' : 'mt-6',
             'flex flex-col items-center gap-4 w-full',
           )}
@@ -87,8 +97,12 @@ export const Sidebar = ({ items }: { items: SidebarItem[] }) => {
         >
           {(collapsed ? items : items.filter((i) => i.title !== 'Contact')).map(
             (item) => {
+              const isActive = isActivePath(item.href);
               const iconNode = item.icon ? (
-                <span className="shrink-0 text-gray-900" aria-hidden>
+                <span
+                  className="grid size-9 place-items-center rounded-xl bg-gradient-to-br from-sky-50 to-cyan-50 text-gray-900 ring-1 ring-inset ring-white/70 shadow-sm"
+                  aria-hidden
+                >
                   {item.icon}
                 </span>
               ) : (
@@ -102,15 +116,27 @@ export const Sidebar = ({ items }: { items: SidebarItem[] }) => {
                   aria-label={item.title}
                   title={item.title}
                   className={cn(
-                    'flex items-center rounded-full text-base font-medium text-gray-900 drop-shadow-sm',
-                    'ring-1 ring-inset ring-sky-300/70 shadow-sm backdrop-blur-md transition-colors',
+                    'flex items-center text-sm font-medium text-gray-900 drop-shadow-sm',
+                    'ring-1 ring-inset ring-white/70 shadow-sm backdrop-blur-md transition-all',
                     collapsed
-                      ? 'justify-center size-12 p-0 bg-sky-100/60 hover:bg-sky-100/80'
-                      : 'w-48 justify-start gap-3 px-4 py-2 bg-sky-100/70 hover:bg-sky-100/90',
+                      ? 'justify-center size-12 rounded-xl bg-white/80 hover:bg-sky-50'
+                      : cn(
+                          'w-full justify-start gap-3 rounded-2xl px-4 py-3',
+                          isActive
+                            ? 'bg-white text-slate-900 ring-sky-200/90 shadow-[0_10px_30px_rgba(45,140,240,0.15)]'
+                            : 'bg-gradient-to-r from-white/75 via-white/55 to-white/75 hover:from-white/85 hover:via-white/70 hover:to-white/85',
+                        ),
                   )}
                 >
                   {iconNode}
-                  {!collapsed && <span className="truncate">{item.title}</span>}
+                  {!collapsed && (
+                    <div className="flex items-center justify-between w-full">
+                      <span className="truncate">{item.title}</span>
+                      {isActive && (
+                        <span className="h-2 w-2 rounded-full bg-sky-500" />
+                      )}
+                    </div>
+                  )}
                 </Link>
               );
             },
@@ -120,12 +146,12 @@ export const Sidebar = ({ items }: { items: SidebarItem[] }) => {
         {/* Bottom contact details when expanded */}
         {!collapsed && (
           <div className="pointer-events-auto absolute inset-x-0 bottom-4 px-4">
-            <div className="rounded-3xl bg-white/70 p-4 text-[13px] text-gray-900 shadow-sm ring-1 ring-inset ring-sky-200/70 backdrop-blur-md supports-[backdrop-filter]:bg-white/50">
-              <div className="mb-2 flex items-center gap-2 font-semibold">
+            <div className="rounded-3xl bg-white/80 p-4 text-[13px] text-gray-900 shadow-md ring-1 ring-inset ring-slate-200/80 backdrop-blur-md supports-[backdrop-filter]:bg-white/60">
+              <div className="mb-3 flex items-center gap-2 font-semibold">
                 <svg
                   viewBox="0 0 24 24"
                   aria-hidden
-                  className="size-5 text-sky-800"
+                  className="size-5 text-sky-700"
                 >
                   <path
                     fill="currentColor"
@@ -136,33 +162,33 @@ export const Sidebar = ({ items }: { items: SidebarItem[] }) => {
               </div>
               <ul className="space-y-2">
                 <li className="flex items-center gap-3 break-all">
-                  <span className="grid size-6 place-items-center rounded-full bg-sky-100 ring-1 ring-inset ring-sky-200">
+                  <span className="grid size-7 place-items-center rounded-xl bg-sky-50 text-xs font-semibold text-slate-900 ring-1 ring-inset ring-sky-100">
                     @
                   </span>
                   <a
-                    className="truncate underline decoration-sky-400/70 underline-offset-2 hover:decoration-sky-600"
+                    className="truncate text-[13px] font-medium underline decoration-sky-400/70 underline-offset-2 hover:decoration-sky-600"
                     href="mailto:gautham.chadalavada@gmail.com"
                   >
                     gautham.chadalavada@gmail.com
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="grid size-6 place-items-center rounded-full bg-sky-100 ring-1 ring-inset ring-sky-200">
+                  <span className="grid size-7 place-items-center rounded-xl bg-sky-50 text-xs font-semibold text-slate-900 ring-1 ring-inset ring-sky-100">
                     ☎︎
                   </span>
                   <a
-                    className="underline-offset-2 hover:underline"
+                    className="text-[13px] font-medium underline-offset-2 hover:underline"
                     href="tel:+18508250636"
                   >
                     +1-850-825-0636
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="grid size-6 place-items-center rounded-full bg-sky-100 ring-1 ring-inset ring-sky-200">
+                  <span className="grid size-7 place-items-center rounded-xl bg-sky-50 text-[11px] font-semibold text-slate-900 ring-1 ring-inset ring-sky-100">
                     in
                   </span>
                   <a
-                    className="truncate underline decoration-sky-400/70 underline-offset-2 hover:decoration-sky-600"
+                    className="truncate text-[13px] font-medium underline decoration-sky-400/70 underline-offset-2 hover:decoration-sky-600"
                     href="https://linkedin.com/in/gautham-c"
                     target="_blank"
                     rel="noreferrer"
@@ -171,11 +197,11 @@ export const Sidebar = ({ items }: { items: SidebarItem[] }) => {
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="grid size-6 place-items-center rounded-full bg-sky-100 ring-1 ring-inset ring-sky-200">
+                  <span className="grid size-7 place-items-center rounded-xl bg-sky-50 text-[10px] font-semibold text-slate-900 ring-1 ring-inset ring-sky-100">
                     GH
                   </span>
                   <a
-                    className="truncate underline decoration-sky-400/70 underline-offset-2 hover:decoration-sky-600"
+                    className="truncate text-[13px] font-medium underline decoration-sky-400/70 underline-offset-2 hover:decoration-sky-600"
                     href="https://github.com/gautham-c"
                     target="_blank"
                     rel="noreferrer"
