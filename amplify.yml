@@ -8,10 +8,10 @@ frontend:
       commands:
         - yarn build
   artifacts:
-    baseDirectory: .next
+    baseDirectory: apps/nextjs-app/.next
     files:
       - '**/*'
   cache:
     paths:
-      - node_modules/**/*
-      - .next/cache/**/*
+      - apps/nextjs-app/node_modules/**/*
+      - apps/nextjs-app/.next/cache/**/*
