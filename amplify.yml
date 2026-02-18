@@ -3,11 +3,10 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd apps/nextjs-app
-        - yarn install --frozen-lockfile
+        - cd apps/nextjs-app && yarn install --frozen-lockfile
     build:
       commands:
-        - yarn build
+        - cd apps/nextjs-app && yarn build
   artifacts:
     baseDirectory: apps/nextjs-app/.next
     files:
