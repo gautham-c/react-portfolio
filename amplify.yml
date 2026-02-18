@@ -6,12 +6,12 @@ frontend:
         - cd apps/nextjs-app && yarn install --frozen-lockfile
     build:
       commands:
-        - cd apps/nextjs-app && yarn build
+        - yarn build
   artifacts:
-    baseDirectory: apps/nextjs-app/.next
+    baseDirectory: .next
     files:
       - '**/*'
   cache:
     paths:
-      - apps/nextjs-app/node_modules/**/*
-      - apps/nextjs-app/.next/cache/**/*
+      - node_modules/**/*
+      - .next/cache/**/*
