@@ -4,7 +4,7 @@ A modern, responsive portfolio website built with Next.js 14, showcasing profess
 
 ## 🚀 Live Demo
 
-Visit the live portfolio at: [Your Portfolio URL]
+Visit the live portfolio at: https://portfolio-gautham-rho.vercel.app/portfolio
 
 ## 📋 Features
 
