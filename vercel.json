@@ -1,4 +1,15 @@
 {
   "framework": "nextjs",
-  "rootDirectory": "apps/nextjs-app"
+  "builds": [
+    {
+      "src": "apps/nextjs-app/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "apps/nextjs-app/$1"
+    }
+  ]
 }
