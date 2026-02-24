@@ -1,10 +1,10 @@
 {
-  "name": "bulletproof-react",
+  "name": "gautham-portfolio",
   "private": true,
   "version": "1.0.0",
   "description": "A simple, scalable, and powerful architecture for building production ready React applications.",
   "scripts": {
-    "prepare": "cd ./apps/nextjs-app && yarn && cd ../nextjs-pages && yarn && cd ../react-vite && yarn",
+    "prepare": "cd ./apps/nextjs-app && yarn",
     "build": "cd apps/nextjs-app && yarn build",
     "start": "cd apps/nextjs-app && yarn start",
     "dev": "cd apps/nextjs-app && yarn dev"
