@@ -1,6 +1,6 @@
 # dependencies
-node_modules/
-/.pnp
+**/node_modules/
+.pnp
 .pnp.js
 
 # testing
@@ -9,24 +9,21 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-/e2e/.auth/
-
-# storybook
-migration-storybook.log
-storybook.log
-storybook-static
 
 # next.js
-.next/
+**/.next/
 /out/
-tsconfig.tsbuildinfo
 
 # production
+/build
 /dist
 
 # misc
-.DS_Store
+**/.DS_Store
 *.pem
+**/*.2.ts
+**/*.2.json
+**/*.2.md
 
 # debug
 npm-debug.log*
@@ -34,11 +31,12 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env
-.env*.local
-
-# local db
-mocked-db.json
+**/.env
+**/.env*.local
 
 # vercel
-.vercel
+**/.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

@@ -6,6 +6,7 @@ import {
 import { ReactNode } from 'react';
 
 import { AppProvider } from '@/app/provider';
+import { ChatBot } from '@/components/chat-bot';
 import { getUserQueryOptions } from '@/lib/auth';
 
 import '@/styles/globals.css';
@@ -33,6 +34,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
         <AppProvider>
           <HydrationBoundary state={dehydratedState}>
             {children}
+            <ChatBot />
           </HydrationBoundary>
         </AppProvider>
       </body>
